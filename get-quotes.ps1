@@ -18,4 +18,3 @@ $html.Links | ? {$_.title -eq "view quote" -or $_.title -eq "view author"} | Sel
 
 (Get-Content -Raw $quote_file) -replace '"view quote"\r\n','' -replace ',"view author"','' | Out-File $quote_file2
 # (Get-Content -Raw $quote_file) -replace ',"view author"',''
-
