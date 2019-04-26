@@ -2,19 +2,16 @@
 # region Variables
 $today = Get-Date -Format yyyyMMddHHmm
 $quote_url = "https://www.brainyquote.com/topics/motivational"
-$quote_file = "quotes.txt"
-$quote_file2 = "quotes2.txt"
+$raw_file = "quotes-raw.txt"
+$quote_file = "quotes" + $today + ".csv"
 # endregion Variables
 
+# Get site's raw html content
 $html = Invoke-WebRequest -Uri $quote_url
 
-$html.RawContentLength # Test
+# Keep innerText, title
+$html.Links | ? {$_.title -eq "view quote" -or $_.title -eq "view author"} | Select-Object innerText, title | Export-Csv -Path $raw_file -NoTypeInformation
 
-# Keep innerText
-# Keep title
-$html.Links | ? {$_.title -eq "view quote" -or $_.title -eq "view author"} | Select-Object innerText, title | Export-Csv -Path $quote_file -NoTypeInformation
-
-# Combine "quote","author"
-
-(Get-Content -Raw $quote_file) -replace '"view quote"\r\n','' -replace ',"view author"','' | Out-File $quote_file2
-# (Get-Content -Raw $quote_file) -replace ',"view author"',''
+# Combine "quote","author" into csv format
+(Get-Content -Raw $raw_file) -replace '"innerText","title"','' -replace '^\r\n','' -replace '"view quote"\r\n','' -replace ',"view author"','' | Out-File $quote_file
+# End of script
