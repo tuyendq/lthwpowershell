@@ -10,8 +10,8 @@ $quote_file = "quotes" + $today + ".csv"
 $html = Invoke-WebRequest -Uri $quote_url
 
 # Keep innerText, title
-$html.Links | ? {$_.title -eq "view quote" -or $_.title -eq "view author"} | Select-Object innerText, title | Export-Csv -Path $raw_file -NoTypeInformation
+$html.Links | ? {$_.title -eq "view quote" -or $_.title -eq "view author"} | Select-Object outerHTML, title | Export-Csv -Path $raw_file -NoTypeInformation
 
 # Combine "quote","author" into csv format
-(Get-Content -Raw $raw_file) -replace '"innerText","title"','' -replace '^\r\n','' -replace '"view quote"\r\n','' -replace ',"view author"','' | Out-File $quote_file
+(Get-Content -Raw $raw_file) -replace '"outerHTML","title"\r\n','' -replace '<a[^>]*>','' -replace '<\/a>','' -replace '"view quote"\r\n','' -replace ',"view author"','' | Out-File $quote_file
 # End of script
