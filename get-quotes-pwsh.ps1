@@ -1,4 +1,5 @@
-﻿# Get quotes from url and export to csv file
+﻿# Powershell Core version
+# Get quotes from url and export to csv file
 # region Global variables
 $today = Get-Date -Format yyyyMMdd
 $quote_url = "https://www.brainyquote.com/topics/motivational"
