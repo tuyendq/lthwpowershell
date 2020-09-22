@@ -27,3 +27,14 @@ else {
   Write-Host $dirPath "already exists."
 }
 ```
+
+Check if the previous command run successfully
+
+```power
+if ($?) {
+  Write-Host "Successfully"
+}
+else {
+  Write-Host "Something wrong"
+}
+```
