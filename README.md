@@ -5,7 +5,6 @@
 >
 
 
-
 ```powershell
 # Add PERMENANT entry to %PATH% environment variable - Add to Registry
 $addToPath = "D:\software\IBM_Cloud_CLI"
@@ -38,3 +37,9 @@ else {
   Write-Host "Something wrong"
 }
 ```
+
+## Modules
+```powershell
+Get-InstalledModule
+```
+
