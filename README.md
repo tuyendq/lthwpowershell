@@ -29,13 +29,18 @@ else {
 
 Check if the previous command run successfully
 
-```power
+```powershell
 if ($?) {
   Write-Host "Successfully"
 }
 else {
   Write-Host "Something wrong"
 }
+```
+
+For loop
+```powershell
+for ($i = 0; $i -lt 10; $i++) { echo $i }
 ```
 
 ## Modules
