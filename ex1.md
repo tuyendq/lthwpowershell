@@ -2,6 +2,7 @@
 
 ```powershell
 # This line is a comment
+# And this another line comment
 ```
 
 ```powershell
