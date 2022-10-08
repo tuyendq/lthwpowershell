@@ -48,3 +48,8 @@ for ($i = 0; $i -lt 10; $i++) { echo $i }
 Get-InstalledModule
 ```
 
+Create multiple files  
+```powershell
+'CarCosmosService.cs','ICarCosmosService.cs' | % {New-Item -Force -Name ".\Services\$_" -Type File}
+```
+
