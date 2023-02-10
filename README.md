@@ -53,3 +53,20 @@ Create multiple files
 'CarCosmosService.cs','ICarCosmosService.cs' | % {New-Item -Force -Name ".\Services\$_" -Type File}
 ```
 
+## Chained commands:
+
+All command are run one by one
+```powershell
+command 1; command 2; command 3;
+```
+
+Command 2 is run only when command is failed
+```powershell
+command 1 || command 2
+```
+
+Command 2 is run only if command 1 run successfully
+```powershell
+command 1 && command 2
+```
+
